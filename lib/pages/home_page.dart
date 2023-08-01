@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:to_do_app/data/database.dart';
@@ -66,10 +68,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.yellow[200],
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text('TO DO'),
         elevation: 0,
         centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 247, 230, 80).withAlpha(200),
+        flexibleSpace: ClipRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+            child: Container(color: Colors.transparent),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: createNewTask,
